@@ -1,3 +1,5 @@
 AMS-Reference
 =============
-A interesting service in iOS 8
+An interesting service in iOS 8
+
+The protocl information is subject to change in later betas. Current protocol has been tested with iOS 8 Beta 3 (12A4318c).
