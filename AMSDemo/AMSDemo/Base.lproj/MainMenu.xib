@@ -683,7 +683,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="g1h-6o-Udy" id="0nw-QM-jea">
-                                    <rect key="frame" x="0.0" y="0.0" width="353" height="19"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="309" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -853,8 +853,8 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qSF-pw-jMa">
-                        <rect key="frame" x="351" y="197" width="112" height="32"/>
-                        <buttonCell key="cell" type="push" title="Show Track" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="E4f-FB-xGS">
+                        <rect key="frame" x="351" y="197" width="102" height="32"/>
+                        <buttonCell key="cell" type="push" title="Show Info" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="E4f-FB-xGS">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -863,7 +863,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ar5-bZ-uvt">
-                        <rect key="frame" x="351" y="312" width="112" height="32"/>
+                        <rect key="frame" x="351" y="312" width="102" height="32"/>
                         <buttonCell key="cell" type="push" title="Connect" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NBh-7h-PXx">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
