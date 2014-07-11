@@ -124,6 +124,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, AMSMusicInfoDel
         }
     }
     
+    func AMSCoreDidConnectPeripheral(peripheral:CBPeripheral!) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.tableView.enabled = false;
+            self.connectButton.title = "Disconnect"
+        }
+    }
+    
+    func AMSCoreDidDisconnectPeripheral(peripheral:CBPeripheral!) {
+        localAMSInstance = nil
+        dispatch_async(dispatch_get_main_queue()){
+            self.tableView.enabled = true;
+            self.connectButton.title = "Connect"
+        }
+    }
+    
     func numberOfRowsInTableView(tableView: NSTableView!) -> Int {
         return discoveredPeripherals.count
     }

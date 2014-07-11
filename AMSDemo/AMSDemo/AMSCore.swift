@@ -12,6 +12,8 @@ import CoreBluetooth
 protocol AMSDelegate {
     func AMSCoreIsReadyToScan()
     func AMSCoreDidDiscoverPeripheral(peripheral:CBPeripheral!, advData:[NSObject : AnyObject]!, RSSI: NSNumber!)
+    func AMSCoreDidConnectPeripheral(peripheral:CBPeripheral!)
+    func AMSCoreDidDisconnectPeripheral(peripheral:CBPeripheral!)
 }
 
 class AMSCore: NSObject, CBCentralManagerDelegate {
@@ -43,10 +45,13 @@ class AMSCore: NSObject, CBCentralManagerDelegate {
     func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
         println("didConnectPeripheral")
         _amsInstance = AMSInstance(peripheral: peripheral)
+        _delegate?.AMSCoreDidConnectPeripheral(peripheral)
     }
     
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
         println("didDisconnectPeripheral")
+        _amsInstance = nil
+        _delegate?.AMSCoreDidDisconnectPeripheral(peripheral)
     }
     
     func centralManagerDidUpdateState(central: CBCentralManager!) {
