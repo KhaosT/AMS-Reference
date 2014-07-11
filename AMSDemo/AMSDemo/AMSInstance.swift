@@ -91,6 +91,8 @@ class AMSInstance : NSObject,CBPeripheralDelegate{
         if characteristic == entityUpdateCharacteristic {
             //Artist,Album,Title,Duration
             internalPeripheral.writeValue(NSData(bytes: [0x02,0x00,0x01,0x02,0x03] as [Byte], length: 5), forCharacteristic: entityUpdateCharacteristic, type: CBCharacteristicWriteType.WithResponse)
+            internalPeripheral.writeValue(NSData(bytes: [0x01,0x00,0x01,0x02,0x03] as [Byte], length: 5), forCharacteristic: entityUpdateCharacteristic, type: CBCharacteristicWriteType.WithResponse)
+            internalPeripheral.writeValue(NSData(bytes: [0x00,0x00,0x01,0x02] as [Byte], length: 4), forCharacteristic: entityUpdateCharacteristic, type: CBCharacteristicWriteType.WithResponse)
         }
     }
 }

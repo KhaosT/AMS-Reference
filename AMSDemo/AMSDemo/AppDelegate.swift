@@ -34,9 +34,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
         if let aNotification = aNotification {
             localAMSInstance = aNotification.object as AMSInstance
             println("Ready to Control")
-            trackWindow = AMSTrackInfoWindow(windowNibName: "AMSTrackInfoWindow")
-            trackWindow.showWindow(nil)
-            localAMSInstance.subscribeUpdateForMusicInfo(trackWindow)
+            dispatch_async(dispatch_get_main_queue()){
+                self.trackWindow = AMSTrackInfoWindow(windowNibName: "AMSTrackInfoWindow")
+                self.trackWindow.showWindow(nil)
+                self.localAMSInstance.subscribeUpdateForMusicInfo(self.trackWindow)
+            }
         }
     }
 

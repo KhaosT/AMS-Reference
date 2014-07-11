@@ -10,10 +10,23 @@ import Cocoa
 
 class AMSTrackInfoWindow: NSWindowController, AMSMusicInfoDelegate {
 
+    //Track
     @IBOutlet var titleLabel: NSTextField
     @IBOutlet var albumLabel: NSTextField
     @IBOutlet var artistLabel: NSTextField
     @IBOutlet var durationLabel: NSTextField
+    
+    //Queue
+    @IBOutlet var indexLabel: NSTextField
+    @IBOutlet var countLabel: NSTextField
+    @IBOutlet var shuffleModeLabel: NSTextField
+    @IBOutlet var repeatModeLabel: NSTextField
+    
+    //Player
+    @IBOutlet var nameLabel: NSTextField
+    @IBOutlet var playbackInfoLabel: NSTextField
+    @IBOutlet var volumeLabel: NSTextField
+    
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -33,6 +46,29 @@ class AMSTrackInfoWindow: NSWindowController, AMSMusicInfoDelegate {
         }
         if info.duration {
             durationLabel.stringValue = info.duration
+        }
+        
+        if info.index {
+            indexLabel.stringValue = info.index
+        }
+        if info.count {
+            countLabel.stringValue = info.count
+        }
+        if info.sfMode {
+            shuffleModeLabel.stringValue = info.sfMode
+        }
+        if info.rpMode {
+            repeatModeLabel.stringValue = info.rpMode
+        }
+        
+        if info.name {
+            nameLabel.stringValue = info.name
+        }
+        if info.playbackInfo {
+            playbackInfoLabel.stringValue = info.playbackInfo
+        }
+        if info.volume {
+            volumeLabel.stringValue = info.volume
         }
     }
     
