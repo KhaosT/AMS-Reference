@@ -1,5 +1,6 @@
 AMS (89D3502B-0F36-433A-8EF4-C502AD55F8DC)
 AMS Remote Command (9B3C81D8-57B1-4A8A-B8DF-0E56F7CA51C2)
+When you enable notification on this characteristic, you will receive a notification contains all the commands that supported by current app.
 0x00 Play
 0x01 Pause
 0x02 Toggle Play/Pause
@@ -15,15 +16,30 @@ AMS Remote Command (9B3C81D8-57B1-4A8A-B8DF-0E56F7CA51C2)
 
 AMS Entity Update (2F7CABCE-808D-411F-9A0C-BB92BA96C102)
 COMMAND_TYPE+COMMAND_SECTION
+
+Example: You want to get notification when current track being changed. You're interested in current album, artist and title of the track, then you can a send command like
+0x0200010203 to subscribe notifications for those changes.
+When there is a change occurs, you will get a notification on this characteristic.
+
+Here is a sample of notification
+First byte indicates the Category of the notification (like here is about Track)
+Second byte indicates the Type of the notification (like here 0x01 means Album)
+Third byte I'm not sure... Normally it's 0x00 but I have see 0x01
+The rest of bytes is value of the notification being encoded by UTF8  
+0x0201004461726b2057617320746865204e69676874
+
+Player(0x00)
 0x0000 Notifying value for attribute Player/Name (): "Music"
 0x0001 Notifying value for attribute Player/Playback Info (): "1,1.0,16.127"
 0x0002 Notifying value for attribute Player/Volume (): "0.5957915"
 
+Queue(0x01)
 0x0100 Notifying value for attribute Queue/Index (): "1"
 0x0101 Notifying value for attribute Queue/Count (): "823"
 0x0102 Notifying value for attribute Queue/Shuffle Mode (): "2"
 0x0103 Notifying value for attribute Queue/Repeat Mode (): "0"
 
+Track(0x02)
 0x0200 Notifying value for attribute Track/Artist (): "Nickel Creek"
 0x0201 Notifying value for attribute Track/Album (): "Reason's Why (The Very Best)"
 0x0202 Notifying value for attribute Track/Title (): "Jealous of the Moon"
