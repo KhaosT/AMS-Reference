@@ -1,0 +1,34 @@
+AMS (89D3502B-0F36-433A-8EF4-C502AD55F8DC)
+AMS Remote Command (9B3C81D8-57B1-4A8A-B8DF-0E56F7CA51C2)
+0x00 Play
+0x01 Pause
+0x02 Toggle Play/Pause
+0x03 Next Track
+0x04 Previous Track
+0x05 Volume Up
+0x06 Volume Down
+0x07 Advance Repeat Mode
+0x08 Advance Shuffle Mode
+0x09 Skip Forward
+0x0A Skip Backward
+
+
+AMS Entity Update (2F7CABCE-808D-411F-9A0C-BB92BA96C102)
+COMMAND_TYPE+COMMAND_SECTION
+0x0000 Notifying value for attribute Player/Name (): "Music"
+0x0001 Notifying value for attribute Player/Playback Info (): "1,1.0,16.127"
+0x0002 Notifying value for attribute Player/Volume (): "0.5957915"
+
+0x0100 Notifying value for attribute Queue/Index (): "1"
+0x0101 Notifying value for attribute Queue/Count (): "823"
+0x0102 Notifying value for attribute Queue/Shuffle Mode (): "2"
+0x0103 Notifying value for attribute Queue/Repeat Mode (): "0"
+
+0x0200 Notifying value for attribute Track/Artist (): "Nickel Creek"
+0x0201 Notifying value for attribute Track/Album (): "Reason's Why (The Very Best)"
+0x0202 Notifying value for attribute Track/Title (): "Jealous of the Moon"
+0x0203 Notifying value for attribute Track/Duration (): "201.990"
+
+
+AMS Entity Attribute (C6B2F38C-23AB-46D8-A6AB-A3A870BBD5D7)
+Commands are similar to "AMS Entity Update"
