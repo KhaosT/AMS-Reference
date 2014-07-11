@@ -17,6 +17,8 @@
 		CC271D49196FA5F000D3F44B /* AMSInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC271D48196FA5F000D3F44B /* AMSInstance.swift */; };
 		CC271D4B196FB25600D3F44B /* AMSTrackInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC271D4A196FB25600D3F44B /* AMSTrackInfo.swift */; };
 		CC271D4D196FB6C400D3F44B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC271D4C196FB6C400D3F44B /* Utilities.swift */; };
+		CC91A8A5196FE59200D6EF8F /* AMSTrackInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC91A8A3196FE59200D6EF8F /* AMSTrackInfoWindow.swift */; };
+		CC91A8A8196FE5A000D6EF8F /* AMSTrackInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC91A8A7196FE5A000D6EF8F /* AMSTrackInfoWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		CC271D48196FA5F000D3F44B /* AMSInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMSInstance.swift; sourceTree = "<group>"; };
 		CC271D4A196FB25600D3F44B /* AMSTrackInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMSTrackInfo.swift; sourceTree = "<group>"; };
 		CC271D4C196FB6C400D3F44B /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		CC91A8A3196FE59200D6EF8F /* AMSTrackInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMSTrackInfoWindow.swift; sourceTree = "<group>"; };
+		CC91A8A7196FE5A000D6EF8F /* AMSTrackInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMSTrackInfoWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				CC271D27196F99A500D3F44B /* AppDelegate.swift */,
+				CC91A8A3196FE59200D6EF8F /* AMSTrackInfoWindow.swift */,
+				CC91A8A7196FE5A000D6EF8F /* AMSTrackInfoWindow.xib */,
 				CC271D44196F99D900D3F44B /* AMSCore.swift */,
 				CC271D48196FA5F000D3F44B /* AMSInstance.swift */,
 				CC271D4A196FB25600D3F44B /* AMSTrackInfo.swift */,
@@ -206,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC271D2A196F99A500D3F44B /* Images.xcassets in Resources */,
+				CC91A8A8196FE5A000D6EF8F /* AMSTrackInfoWindow.xib in Resources */,
 				CC271D2D196F99A500D3F44B /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC271D4D196FB6C400D3F44B /* Utilities.swift in Sources */,
+				CC91A8A5196FE59200D6EF8F /* AMSTrackInfoWindow.swift in Sources */,
 				CC271D45196F99D900D3F44B /* AMSCore.swift in Sources */,
 				CC271D28196F99A500D3F44B /* AppDelegate.swift in Sources */,
 				CC271D4B196FB25600D3F44B /* AMSTrackInfo.swift in Sources */,
@@ -417,6 +425,7 @@
 				CC271D3E196F99A500D3F44B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC271D3F196F99A500D3F44B /* Build configuration list for PBXNativeTarget "AMSDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +434,7 @@
 				CC271D41196F99A500D3F44B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

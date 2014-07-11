@@ -9,17 +9,11 @@
 import Cocoa
 import CoreBluetooth
 
-class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, AMSMusicInfoDelegate, NSTableViewDelegate, NSTableViewDataSource {
+class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDelegate, NSTableViewDataSource {
                             
     @IBOutlet var window: NSWindow
     @IBOutlet var tableView: NSTableView
     @IBOutlet var connectButton: NSButton
-    
-    @IBOutlet var titleLabel: NSTextField
-    @IBOutlet var albumLabel: NSTextField
-    @IBOutlet var artistLabel: NSTextField
-    @IBOutlet var durationLabel: NSTextField
-    
     
     var mediaCore:AMSCore!
     
@@ -27,6 +21,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, AMSMusicInfoDel
     var peripheralsRSSI = [CBPeripheral:NSNumber]()
     
     var localAMSInstance:AMSInstance!
+    
+    var trackWindow:AMSTrackInfoWindow!
 
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
         mediaCore = AMSCore(delegate: self)
@@ -38,22 +34,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, AMSMusicInfoDel
         if let aNotification = aNotification {
             localAMSInstance = aNotification.object as AMSInstance
             println("Ready to Control")
-            localAMSInstance.subscribeUpdateForMusicInfo(self)
-        }
-    }
-    
-    func didUpdateMediaInfo(info:AMSTrackInfo!) {
-        if info.title {
-            titleLabel.stringValue = info.title
-        }
-        if info.album {
-            albumLabel.stringValue = info.album
-        }
-        if info.artist {
-            artistLabel.stringValue = info.artist
-        }
-        if info.duration {
-            durationLabel.stringValue = info.duration
+            trackWindow = AMSTrackInfoWindow(windowNibName: "AMSTrackInfoWindow")
+            trackWindow.showWindow(nil)
+            localAMSInstance.subscribeUpdateForMusicInfo(trackWindow)
         }
     }
 
@@ -69,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, AMSMusicInfoDel
         if connectButton.title == "Connect" {
             tableView.enabled = false;
             mediaCore.connectToPeripheral(discoveredPeripherals[tableView.selectedRow])
-            connectButton.title = "Disconnect"
+            connectButton.title = "Connecting..."
         }else{
             tableView.enabled = true;
             mediaCore.disconnectPeripheral(discoveredPeripherals[tableView.selectedRow])
@@ -107,6 +90,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, AMSMusicInfoDel
             return
         }
         localAMSInstance?.sendControlCommand(command)
+    }
+    
+    @IBAction func showTrackInfoWindow(sender: AnyObject) {
+        trackWindow?.showWindow(nil)
     }
     
     func AMSCoreIsReadyToScan() {
