@@ -23,6 +23,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
     var localAMSInstance:AMSInstance!
     
     var trackWindow:AMSTrackInfoWindow!
+    
+    var isConnected:Bool!
 
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
         mediaCore = AMSCore(delegate: self)
@@ -46,6 +48,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
 
     func applicationWillTerminate(aNotification: NSNotification?) {
         // Insert code here to tear down your application
+        if localAMSInstance {
+            mediaCore.disconnectPeripheral(localAMSInstance.internalPeripheral)
+        }
+        while self.isConnected == true {
+            //Wait until we disconnect from peripheral
+        }
     }
     
     @IBAction func tableViewSelectionDidChange(sender: AnyObject) {
@@ -128,6 +136,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
     }
     
     func AMSCoreDidConnectPeripheral(peripheral:CBPeripheral!) {
+        self.isConnected = true
         dispatch_async(dispatch_get_main_queue()){
             self.tableView.enabled = false;
             self.connectButton.title = "Disconnect"
@@ -136,7 +145,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
     
     func AMSCoreDidDisconnectPeripheral(peripheral:CBPeripheral!) {
         localAMSInstance = nil
+        self.isConnected = false
         dispatch_async(dispatch_get_main_queue()){
+            self.trackWindow.close()
+            self.trackWindow = nil
             self.changeControlButtonState(false)
             self.tableView.enabled = true;
             self.connectButton.title = "Connect"
