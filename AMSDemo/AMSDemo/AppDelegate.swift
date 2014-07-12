@@ -27,6 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
         mediaCore = AMSCore(delegate: self)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AMSDidFinishSetup:", name: "AMSDidFinishSetup", object: nil)
+        changeControlButtonState(false)
         // Insert code here to initialize your application
     }
     
@@ -35,6 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
             localAMSInstance = aNotification.object as AMSInstance
             println("Ready to Control")
             dispatch_async(dispatch_get_main_queue()){
+                self.changeControlButtonState(true)
                 self.trackWindow = AMSTrackInfoWindow(windowNibName: "AMSTrackInfoWindow")
                 self.trackWindow.showWindow(nil)
                 self.localAMSInstance.subscribeUpdateForMusicInfo(self.trackWindow)
@@ -48,6 +50,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
     
     @IBAction func tableViewSelectionDidChange(sender: AnyObject) {
         connectButton.enabled = true
+    }
+    
+    func changeControlButtonState(enable:Bool) {
+        for view in self.window.contentView.subviews as [NSView] {
+            if view.isKindOfClass(NSButton.self) {
+                if view.tag != 100 {
+                    if let button = view as? NSButton {
+                        button.enabled = enable
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func connectToDevice(sender: AnyObject) {
@@ -123,6 +137,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
     func AMSCoreDidDisconnectPeripheral(peripheral:CBPeripheral!) {
         localAMSInstance = nil
         dispatch_async(dispatch_get_main_queue()){
+            self.changeControlButtonState(false)
             self.tableView.enabled = true;
             self.connectButton.title = "Connect"
         }
