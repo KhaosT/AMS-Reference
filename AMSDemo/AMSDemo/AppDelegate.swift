@@ -51,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
         if localAMSInstance {
             mediaCore.disconnectPeripheral(localAMSInstance.internalPeripheral)
         }
-        while self.isConnected == true {
+        while self.isConnected? == true {
             //Wait until we disconnect from peripheral
         }
     }

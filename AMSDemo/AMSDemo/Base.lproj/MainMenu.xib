@@ -689,7 +689,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="PeripheralColumnIdentifier" width="116" minWidth="40" maxWidth="1000" id="iZ9-MW-Ixx">
+                                        <tableColumn identifier="PeripheralColumnIdentifier" editable="NO" width="116" minWidth="40" maxWidth="1000" id="iZ9-MW-Ixx">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Peripheral">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -702,7 +702,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
-                                        <tableColumn identifier="RSSIColumnIdentifier" width="187" minWidth="40" maxWidth="1000" id="atS-xD-m3P">
+                                        <tableColumn identifier="RSSIColumnIdentifier" editable="NO" width="187" minWidth="40" maxWidth="1000" id="atS-xD-m3P">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="RSSI">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
