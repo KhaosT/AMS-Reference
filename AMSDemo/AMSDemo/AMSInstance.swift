@@ -58,7 +58,6 @@ class AMSInstance : NSObject,CBPeripheralDelegate{
     }
     
     func sendHeartBeatCommand() {
-        println("Send Heart Beat")
         internalPeripheral.writeValue(NSData(bytes: [0x00,0x01] as [Byte], length: 2), forCharacteristic: entityAttrCharacteristic, type: CBCharacteristicWriteType.WithResponse)
     }
     
@@ -99,7 +98,7 @@ class AMSInstance : NSObject,CBPeripheralDelegate{
                 activeTimer.invalidate()
                 activeTimer = nil
             }
-            activeTimer = NSTimer(timeInterval: 5.0, target: self, selector: "sendHeartBeatCommand", userInfo: nil, repeats: true)
+            activeTimer = NSTimer(timeInterval: 3.0, target: self, selector: "sendHeartBeatCommand", userInfo: nil, repeats: true)
             NSRunLoop.mainRunLoop().addTimer(activeTimer, forMode: NSRunLoopCommonModes)
             NSNotificationCenter.defaultCenter().postNotificationName("AMSDidFinishSetup", object: self)
         }
