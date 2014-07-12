@@ -803,7 +803,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="Gcd-wW-4DL">
-                        <rect key="frame" x="117" y="64" width="98" height="32"/>
+                        <rect key="frame" x="112" y="64" width="98" height="32"/>
                         <buttonCell key="cell" type="push" title="Volume -" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VfO-vu-HXr">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -833,7 +833,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" tag="9" translatesAutoresizingMaskIntoConstraints="NO" id="FgB-ph-JQi">
-                        <rect key="frame" x="215" y="64" width="122" height="32"/>
+                        <rect key="frame" x="210" y="64" width="122" height="32"/>
                         <buttonCell key="cell" type="push" title="Skip Forward" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J9Z-FL-noB">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -906,7 +906,7 @@
                     <constraint firstItem="iRd-Z9-rqc" firstAttribute="baseline" secondItem="sQq-jH-hMm" secondAttribute="baseline" id="plH-Ob-tXx"/>
                     <constraint firstItem="jHy-t8-Hbb" firstAttribute="top" secondItem="oIl-Rs-6Df" secondAttribute="bottom" constant="47" id="q8u-AH-qnt"/>
                     <constraint firstItem="oIl-Rs-6Df" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="quw-Yz-gkt"/>
-                    <constraint firstItem="Gcd-wW-4DL" firstAttribute="leading" secondItem="qR4-c8-ele" secondAttribute="trailing" constant="17" id="yPM-DQ-IPx"/>
+                    <constraint firstItem="Gcd-wW-4DL" firstAttribute="leading" secondItem="qR4-c8-ele" secondAttribute="trailing" constant="12" id="yPM-DQ-IPx"/>
                     <constraint firstItem="FgB-ph-JQi" firstAttribute="baseline" secondItem="Gcd-wW-4DL" secondAttribute="baseline" id="yU4-Bx-yIR"/>
                 </constraints>
             </view>
