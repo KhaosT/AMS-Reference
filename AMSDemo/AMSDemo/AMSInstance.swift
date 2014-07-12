@@ -28,6 +28,8 @@ class AMSInstance : NSObject,CBPeripheralDelegate{
     var trackInfo:AMSTrackInfo!
     var musicDelegate:AMSMusicInfoDelegate!
     
+    var activeTimer:NSTimer!
+    
     init(peripheral:CBPeripheral!){
         super.init()
         self.internalPeripheral = peripheral
@@ -55,6 +57,24 @@ class AMSInstance : NSObject,CBPeripheralDelegate{
         trackInfo = AMSTrackInfo()
     }
     
+    func sendHeartBeatCommand() {
+        println("Send Heart Beat")
+        internalPeripheral.writeValue(NSData(bytes: [0x00,0x01] as [Byte], length: 2), forCharacteristic: entityAttrCharacteristic, type: CBCharacteristicWriteType.WithResponse)
+    }
+    
+    func didDisconnectFromPeripheral() {
+        if activeTimer {
+            activeTimer.invalidate()
+            activeTimer = nil
+        }
+        internalPeripheral = nil
+        remoteCommandCharacteristic = nil
+        entityUpdateCharacteristic = nil
+        entityAttrCharacteristic = nil
+        trackInfo = nil
+        musicDelegate = nil
+    }
+    
     func peripheral(peripheral: CBPeripheral!, didDiscoverCharacteristicsForService service: CBService!, error: NSError!) {
         println("didDiscoverCharacteristicsForService:\(service)")
         for characteristic in service.characteristics as [CBCharacteristic]{
@@ -75,6 +95,12 @@ class AMSInstance : NSObject,CBPeripheralDelegate{
         }
         if remoteCommandCharacteristic != nil && entityAttrCharacteristic != nil && entityUpdateCharacteristic != nil {
             println("Finish Setup AMS")
+            if activeTimer {
+                activeTimer.invalidate()
+                activeTimer = nil
+            }
+            activeTimer = NSTimer(timeInterval: 5.0, target: self, selector: "sendHeartBeatCommand", userInfo: nil, repeats: true)
+            NSRunLoop.mainRunLoop().addTimer(activeTimer, forMode: NSRunLoopCommonModes)
             NSNotificationCenter.defaultCenter().postNotificationName("AMSDidFinishSetup", object: self)
         }
     }

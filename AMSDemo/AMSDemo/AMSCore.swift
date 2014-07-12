@@ -50,6 +50,7 @@ class AMSCore: NSObject, CBCentralManagerDelegate {
     
     func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
         println("didDisconnectPeripheral")
+        _amsInstance?.didDisconnectFromPeripheral()
         _amsInstance = nil
         _delegate?.AMSCoreDidDisconnectPeripheral(peripheral)
     }
