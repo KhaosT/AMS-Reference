@@ -6,6 +6,7 @@ Environment:
     nRF51822 SDK 6.0.0 + S110 7.0.0
 
 How to use the demo:
+
     1. After flash the S110 and this demo into PCA10001, go to iOS Bluetooth Settings and connect to device "AMS"
     2. Accept the pairing request
     3. Play some music using Music.app
