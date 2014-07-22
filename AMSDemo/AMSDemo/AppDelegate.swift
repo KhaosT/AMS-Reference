@@ -11,9 +11,9 @@ import CoreBluetooth
 
 class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDelegate, NSTableViewDataSource {
                             
-    @IBOutlet var window: NSWindow
-    @IBOutlet var tableView: NSTableView
-    @IBOutlet var connectButton: NSButton
+    @IBOutlet var window: NSWindow!
+    @IBOutlet var tableView: NSTableView!
+    @IBOutlet var connectButton: NSButton!
     
     var mediaCore:AMSCore!
     
