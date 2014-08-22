@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>251A7F95-3EE2-481F-84CA-148CB5828139</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AMSDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>31B0A024D73EF3FE4255DB71AF480558A92336DB</key>
+		<string>https://github.com/KhaosT/AMS-Reference.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AMSDemo/AMSDemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>31B0A024D73EF3FE4255DB71AF480558A92336DB</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/KhaosT/AMS-Reference.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>31B0A024D73EF3FE4255DB71AF480558A92336DB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>31B0A024D73EF3FE4255DB71AF480558A92336DB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AMS-Reference</string>
+		</dict>
+	</array>
+</dict>
+</plist>
