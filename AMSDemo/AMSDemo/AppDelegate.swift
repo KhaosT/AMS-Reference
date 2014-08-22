@@ -11,16 +11,16 @@ import CoreBluetooth
 
 class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDelegate, NSTableViewDataSource {
                             
-    @IBOutlet var window: NSWindow
-    @IBOutlet var tableView: NSTableView
-    @IBOutlet var connectButton: NSButton
+    @IBOutlet var window: NSWindow!
+    @IBOutlet var tableView: NSTableView!
+    @IBOutlet var connectButton: NSButton!
     
     var mediaCore:AMSCore!
     
     var discoveredPeripherals = [CBPeripheral]()
     var peripheralsRSSI = [CBPeripheral:NSNumber]()
     
-    var localAMSInstance:AMSInstance!
+    var localAMSInstance:AMSInstance?
     
     var trackWindow:AMSTrackInfoWindow!
     
@@ -35,21 +35,23 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
     
     func AMSDidFinishSetup(aNotification:NSNotification!){
         if let aNotification = aNotification {
-            localAMSInstance = aNotification.object as AMSInstance
+            localAMSInstance = aNotification.object as? AMSInstance
             println("Ready to Control")
             dispatch_async(dispatch_get_main_queue()){
                 self.changeControlButtonState(true)
                 self.trackWindow = AMSTrackInfoWindow(windowNibName: "AMSTrackInfoWindow")
-                self.trackWindow.showWindow(nil)
-                self.localAMSInstance.subscribeUpdateForMusicInfo(self.trackWindow)
+                self.trackWindow?.showWindow(nil)
+                if self.trackWindow != nil {
+                    self.localAMSInstance?.subscribeUpdateForMusicInfo(self.trackWindow)
+                }
             }
         }
     }
 
     func applicationWillTerminate(aNotification: NSNotification?) {
         // Insert code here to tear down your application
-        if localAMSInstance {
-            mediaCore.disconnectPeripheral(localAMSInstance.internalPeripheral)
+        if localAMSInstance != nil {
+            mediaCore.disconnectPeripheral(localAMSInstance?.internalPeripheral)
         }
         while self.isConnected? == true {
             //Wait until we disconnect from peripheral
@@ -127,7 +129,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
     
     func AMSCoreDidDiscoverPeripheral(peripheral:CBPeripheral!, advData:[NSObject : AnyObject]!, RSSI: NSNumber!) {
         if !contains(discoveredPeripherals, peripheral) {
-            discoveredPeripherals += peripheral
+            discoveredPeripherals.append(peripheral)
         }
         peripheralsRSSI[peripheral] = RSSI
         dispatch_async(dispatch_get_main_queue()) {
@@ -147,11 +149,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
         localAMSInstance = nil
         self.isConnected = false
         dispatch_async(dispatch_get_main_queue()){
-            self.trackWindow.close()
-            self.trackWindow = nil
-            self.changeControlButtonState(false)
-            self.tableView.enabled = true;
-            self.connectButton.title = "Connect"
+            if self.trackWindow != nil {
+                self.trackWindow.close()
+                self.trackWindow = nil
+                self.changeControlButtonState(false)
+                self.tableView.enabled = true;
+                self.connectButton.title = "Connect"
+            }
         }
     }
     
@@ -161,7 +165,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
     
     func tableView(tableView: NSTableView!, objectValueForTableColumn tableColumn: NSTableColumn!, row: Int) -> AnyObject! {
         if tableColumn.identifier == "PeripheralColumnIdentifier" {
-            if discoveredPeripherals[row].name {
+            if discoveredPeripherals[row].name != nil {
                 return discoveredPeripherals[row].name
             }else{
                 return discoveredPeripherals[row].identifier.UUIDString

@@ -11,21 +11,21 @@ import Cocoa
 class AMSTrackInfoWindow: NSWindowController, AMSMusicInfoDelegate {
 
     //Track
-    @IBOutlet var titleLabel: NSTextField
-    @IBOutlet var albumLabel: NSTextField
-    @IBOutlet var artistLabel: NSTextField
-    @IBOutlet var durationLabel: NSTextField
+    @IBOutlet var titleLabel: NSTextField!
+    @IBOutlet var albumLabel: NSTextField!
+    @IBOutlet var artistLabel: NSTextField!
+    @IBOutlet var durationLabel: NSTextField!
     
     //Queue
-    @IBOutlet var indexLabel: NSTextField
-    @IBOutlet var countLabel: NSTextField
-    @IBOutlet var shuffleModeLabel: NSTextField
-    @IBOutlet var repeatModeLabel: NSTextField
+    @IBOutlet var indexLabel: NSTextField!
+    @IBOutlet var countLabel: NSTextField!
+    @IBOutlet var shuffleModeLabel: NSTextField!
+    @IBOutlet var repeatModeLabel: NSTextField!
     
     //Player
-    @IBOutlet var nameLabel: NSTextField
-    @IBOutlet var playbackInfoLabel: NSTextField
-    @IBOutlet var volumeLabel: NSTextField
+    @IBOutlet var nameLabel: NSTextField!
+    @IBOutlet var playbackInfoLabel: NSTextField!
+    @IBOutlet var volumeLabel: NSTextField!
     
     
     override func windowDidLoad() {
@@ -35,39 +35,39 @@ class AMSTrackInfoWindow: NSWindowController, AMSMusicInfoDelegate {
     }
     
     func didUpdateMediaInfo(info:AMSTrackInfo!) {
-        if info.title {
+        if info.title != nil {
             titleLabel.stringValue = info.title
         }
-        if info.album {
+        if info.album != nil {
             albumLabel.stringValue = info.album
         }
-        if info.artist {
+        if info.artist != nil {
             artistLabel.stringValue = info.artist
         }
-        if info.duration {
+        if info.duration != nil {
             durationLabel.stringValue = info.duration
         }
         
-        if info.index {
+        if info.index != nil {
             indexLabel.stringValue = info.index
         }
-        if info.count {
+        if info.count != nil {
             countLabel.stringValue = info.count
         }
-        if info.sfMode {
+        if info.sfMode != nil {
             shuffleModeLabel.stringValue = info.sfMode
         }
-        if info.rpMode {
+        if info.rpMode != nil {
             repeatModeLabel.stringValue = info.rpMode
         }
         
-        if info.name {
+        if info.name != nil {
             nameLabel.stringValue = info.name
         }
-        if info.playbackInfo {
+        if info.playbackInfo != nil{
             playbackInfoLabel.stringValue = info.playbackInfo
         }
-        if info.volume {
+        if info.volume != nil {
             volumeLabel.stringValue = info.volume
         }
     }

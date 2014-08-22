@@ -62,7 +62,7 @@ class AMSInstance : NSObject,CBPeripheralDelegate{
     }
     
     func didDisconnectFromPeripheral() {
-        if activeTimer {
+        if activeTimer != nil {
             activeTimer.invalidate()
             activeTimer = nil
         }
@@ -94,7 +94,7 @@ class AMSInstance : NSObject,CBPeripheralDelegate{
         }
         if remoteCommandCharacteristic != nil && entityAttrCharacteristic != nil && entityUpdateCharacteristic != nil {
             println("Finish Setup AMS")
-            if activeTimer {
+            if activeTimer != nil {
                 activeTimer.invalidate()
                 activeTimer = nil
             }
