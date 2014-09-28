@@ -45,7 +45,7 @@ class AMSTrackInfo{
             switch rawData.read(0) as Byte {
             case 0x00:
                 println("Type:Player Info")
-                if let type = AMSPlayerDataType.fromRaw(rawData.read(1) as Byte) {
+                if let type = AMSPlayerDataType(rawValue: rawData.read(1) as Byte) {
                     switch type {
                     case .Name:
                         name = NSString(data: data.subdataWithRange(NSMakeRange(3, data.length-3)), encoding: NSUTF8StringEncoding)
@@ -66,7 +66,7 @@ class AMSTrackInfo{
                 
             case 0x01:
                 println("Type:Queue Info")
-                if let type = AMSQueueDataType.fromRaw(rawData.read(1) as Byte) {
+                if let type = AMSQueueDataType(rawValue: rawData.read(1) as Byte) {
                     switch type {
                     case .Index:
                         index = NSString(data: data.subdataWithRange(NSMakeRange(3, data.length-3)), encoding: NSUTF8StringEncoding)
@@ -91,7 +91,7 @@ class AMSTrackInfo{
                 
             case 0x02:
                 println("Type:Track Info")
-                if let type = AMSTrackDataType.fromRaw(rawData.read(1) as Byte) {
+                if let type = AMSTrackDataType(rawValue: rawData.read(1) as Byte) {
                     switch type {
                     case .Artist:
                         artist = NSString(data: data.subdataWithRange(NSMakeRange(3, data.length-3)), encoding: NSUTF8StringEncoding)

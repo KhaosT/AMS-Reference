@@ -38,13 +38,14 @@ class AMSInstance : NSObject,CBPeripheralDelegate{
     }
     
     func sendControlCommand(command:AMSControlCommand!){
-        internalPeripheral.writeValue(NSData(bytes: [command.toRaw()] as [Byte], length: 1), forCharacteristic: remoteCommandCharacteristic, type: CBCharacteristicWriteType.WithResponse)
+        internalPeripheral.writeValue(NSData(bytes: [command.rawValue] as [Byte], length: 1), forCharacteristic: remoteCommandCharacteristic, type: CBCharacteristicWriteType.WithResponse)
     }
     
     func peripheral(peripheral: CBPeripheral!, didDiscoverServices error: NSError!) {
         println("didDiscoverServices")
         for service in peripheral.services as [CBService] {
-            if service.UUID == CBUUID.UUIDWithString("89D3502B-0F36-433A-8EF4-C502AD55F8DC") {
+            println("Service:\(service.UUID.UUIDString)")
+            if service.UUID == CBUUID(string: "89D3502B-0F36-433A-8EF4-C502AD55F8DC") {
                 println("Find Service")
                 peripheral.discoverCharacteristics(nil, forService: service)
             }
@@ -77,17 +78,17 @@ class AMSInstance : NSObject,CBPeripheralDelegate{
     func peripheral(peripheral: CBPeripheral!, didDiscoverCharacteristicsForService service: CBService!, error: NSError!) {
         println("didDiscoverCharacteristicsForService:\(service)")
         for characteristic in service.characteristics as [CBCharacteristic]{
-            if characteristic.UUID == CBUUID.UUIDWithString("9B3C81D8-57B1-4A8A-B8DF-0E56F7CA51C2"){
+            if characteristic.UUID == CBUUID(string: "9B3C81D8-57B1-4A8A-B8DF-0E56F7CA51C2"){
                 println("Find AMS Remote Command")
                 remoteCommandCharacteristic = characteristic
                 //Pairing and Notify
                 peripheral.setNotifyValue(true, forCharacteristic: remoteCommandCharacteristic)
             }
-            if characteristic.UUID == CBUUID.UUIDWithString("2F7CABCE-808D-411F-9A0C-BB92BA96C102"){
+            if characteristic.UUID == CBUUID(string: "2F7CABCE-808D-411F-9A0C-BB92BA96C102"){
                 println("Find AMS Entity Update")
                 entityUpdateCharacteristic = characteristic
             }
-            if characteristic.UUID == CBUUID.UUIDWithString("C6B2F38C-23AB-46D8-A6AB-A3A870BBD5D7"){
+            if characteristic.UUID == CBUUID(string: "C6B2F38C-23AB-46D8-A6AB-A3A870BBD5D7"){
                 println("AMS Entity Attribute")
                 entityAttrCharacteristic = characteristic
             }
