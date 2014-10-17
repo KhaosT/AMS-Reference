@@ -63,7 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, AMSDelegate, NSTableViewDele
     }
     
     func changeControlButtonState(enable:Bool) {
-        for view in self.window.contentView.subviews as [NSView] {
+        for view in self.window.contentView?.subviews as [NSView] {
             if view.isKindOfClass(NSButton.self) {
                 if view.tag != 100 {
                     if let button = view as? NSButton {
